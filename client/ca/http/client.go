@@ -13,7 +13,6 @@ import (
 	"github.com/pkg/errors"
 
 	"github.com/s7techlab/hlf-sdk-go/api/config"
-	"github.com/s7techlab/hlf-sdk-go/client"
 	"github.com/s7techlab/hlf-sdk-go/client/ca"
 	clienterrors "github.com/s7techlab/hlf-sdk-go/client/errors"
 	"github.com/s7techlab/hlf-sdk-go/crypto"
@@ -40,7 +39,7 @@ func New(signer msp.SigningIdentity, opts ...Opt) (*Client, error) {
 	}
 
 	if c.config == nil {
-		return nil, client.ErrEmptyConfig
+		return nil, fmt.Errorf(`config is empty`)
 	}
 
 	if c.crypto == nil {
